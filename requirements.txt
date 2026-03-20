@@ -1,0 +1,26 @@
+# --- API Framework ---
+fastapi>=0.109.0
+uvicorn>=0.27.0
+
+# --- Validation and Settings ---
+pydantic>=2.5.3
+pydantic-settings>=2.1.0
+
+# --- Data Processing and Mathematics ---
+# Removed strict version pins (==) to allow pre-compiled Wheels for Python 3.13
+pandas>=2.2.0
+numpy>=1.26.3
+
+# --- Artificial Intelligence (Recommender) ---
+scikit-learn>=1.4.0
+
+# --- External Connections and Async ---
+aiohttp>=3.9.1
+httpx>=0.26.0
+
+# --- Report Generation ---
+reportlab>=4.1.0
+matplotlib>=3.8.2
+
+# --- Testing and Quality ---
+pytest>=8.0.0
