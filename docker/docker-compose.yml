@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  ecobim-api:
+    build: 
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: ecobim_api
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG_MODE=True
+      # WARNING: dev credentials only! don't push prod urls here
+      - DATABASE_URL=postgresql://admin:postgres@postgres_db:5432/ecobim_data
+    depends_on:
+      - postgres_db
+    networks:
+      - aura_network
+
+  postgres_db:
+    # sticking to 15 for now, 16 gave us weird volume permission errors locally
+    image: postgres:15-alpine
+    container_name: ecobim_db
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=ecobim_data
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - aura_network
+
+networks:
+  aura_network:
+    driver: bridge
+
+volumes:
+  # TODO: clean this volume up occasionally, it eats up disk space
+  postgres_data:
