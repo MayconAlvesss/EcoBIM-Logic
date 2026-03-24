@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura CORE | LCA Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:       #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.95);
+            --border:   #000000;
+            --mid:      #cccccc;
+            --text:     #111111;
+            --muted:    #555555;
+            --accent:   #00a878;
+            --mono:     'JetBrains Mono', monospace;
+            --sans:     'Inter', sans-serif;
+        }
+
+        html, body {
+            width: 100%; height: 100%;
+            background: transparent;
+            font-family: var(--sans);
+            color: var(--text);
+            overflow: hidden;
+            /* Avoid native scrollbars to keep overlay clean */
+        }
+
+        /* ── Top structure ─────────────────────────────────────────── */
+        .sheet {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            grid-template-rows: 1fr 220px;
+            width: 100%; height: 100%;
+            gap: 15px;
+            padding: 15px;
+            pointer-events: none; /* Let clicks pass through the empty center */
+        }
+
+        /* ── Viewer (main centre) - INVISIBLE so you can see Revit ─── */
+        .viewer {
+            grid-column: 1;
+            grid-row: 1;
+            position: relative;
+            display: flex; align-items: start; justify-content: start;
+        }
+        
+        .api-badge {
+            background: var(--bg-glass); border: 2px solid var(--border);
+            font-size: 11px; font-weight: 700;
+            padding: 6px 12px; font-family: var(--mono);
+            display: inline-flex; align-items: center; gap: 8px;
+            box-shadow: 4px 4px 0 rgba(0,0,0,1);
+            pointer-events: auto; /* Re-enable clicks for badges */
+        }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #cc0000; }
+        .dot.online { background: #00aa55; }
+
+        .scan-banner {
+            position: absolute; top: 0; right: 0;
+            background: #1a2a40; color: white;
+            font-size: 11px; font-family: var(--mono);
+            padding: 8px 16px; border: 2px solid #2a5298;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+            pointer-events: auto;
+            display: none;
+        }
+        .scan-banner.visible { display: block; }
+
+        /* ── Floating Blocks base class ──────────────────────────────── */
+        .glass-panel {
+            background: var(--bg-glass);
+            border: 2px solid var(--border);
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.85);
+            pointer-events: auto;
+            backdrop-filter: blur(8px);
+        }
+
+        /* ── DATA ROW (bottom-left) ─────────────────────────────────── */
+        .data-row {
+            grid-column: 1;
+            grid-row: 2;
+            display: flex;
+        }
+        
+        .data-col {
+            flex: 1;
+            border-right: 2px solid var(--border);
+            padding: 12px 14px;
+            overflow: hidden;
+        }
+        .data-col:last-child { border-right: none; }
+        
+        .data-col h3 {
+            font-size: 10px; font-weight: 900;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 8px; border-bottom: 2px solid #000;
+            padding-bottom: 4px;
+        }
+        .kv { display: flex; justify-content: space-between; font-size: 9px; padding: 3px 0; }
+        .kv .v { font-family: var(--mono); font-weight: 700; }
+        .kv .v.warn { color: #cc4400; }
+        .kv .v.ok   { color: #007744; }
+
+        .note-list { font-size: 9px; line-height: 1.5; color: var(--text); padding-left: 14px; font-weight: 600; }
+        .note-list li { margin-bottom: 4px; }
+
+        .mat-stat { font-size: 10px; margin-top: 6px; font-weight:600; }
+        .mat-stat span { font-family: var(--mono); font-weight: 800; font-size: 11px; }
+
+        /* categories summary */
+        .cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 8px; }
+        .cat-chip {
+            font-size: 9px; font-family: var(--mono);
+            padding: 3px 6px; border-radius: 0px;
+            display: flex; justify-content: space-between;
+            border: 1px solid #aaa;
+        }
+
+        /* ── SIDE PANEL (right) ─────────────────────────────────────── */
+        .side-panel {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            display: flex; flex-direction: column;
+        }
+        
+        .brand-block {
+            padding: 20px;
+            border-bottom: 2px solid var(--border);
+            text-align: right;
+            background: #111; color: #00d4a8;
+        }
+        .brand-block .logo { font-size: 24px; font-weight: 900; letter-spacing: -1px; }
+        .brand-block .sub  { font-size: 9px; color: #fff; margin-top: 4px; font-weight: 600;}
+
+        /* Legend */
+        .legend-block {
+            flex: 1; padding: 18px; overflow: hidden;
+        }
+        .legend-title { font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+        .legend-sub   { font-size: 9px; color: var(--muted); margin-bottom: 12px; font-weight: 600;}
+
+        .gradient-wrap { display: flex; gap: 12px; align-items: stretch; height: 180px; }
+        .gradient-bar {
+            width: 32px;
+            background: linear-gradient(to bottom, #9400d3, #b22222, #ff0000, #ff4500, #ff8000, #ffcc00, #ffff00);
+            border: 2px solid #000; flex-shrink: 0;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+        }
+        .gradient-labels {
+            display: flex; flex-direction: column; justify-content: space-between;
+            font-family: var(--mono); font-size: 10px; color: var(--text); font-weight: 700;
+        }
+
+        .score-line {
+            margin-top: 15px; font-family: var(--mono); font-size: 12px; font-weight: 900;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        #score-val { color: #d32f2f; font-size: 14px; }
+
+        /* Rating */
+        .rating-wrap { padding: 15px 0 0 0; }
+        .rating-label { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .r-bar {
+            display: flex; align-items: center;
+            height: 16px; margin-bottom: 3px;
+            font-size: 9px; font-weight: 900; color: white;
+            border: 2px solid transparent; padding-left: 6px;
+            transition: transform .15s;
+        }
+        .r-bar.active { border: 2px solid #000; transform: scaleX(1.03) translateX(2px); box-shadow: 3px 3px 0 rgba(0,0,0,1); }
+        .r-App { width: 30%; background: #005500; }
+        .r-Ap  { width: 40%; background: #008800; }
+        .r-A   { width: 50%; background: #44bb00; color: #000; }
+        .r-B   { width: 60%; background: #aabb00; color: #000; }
+        .r-C   { width: 70%; background: #ddcc00; color: #000; }
+        .r-D   { width: 80%; background: #ee8800; }
+        .r-E   { width: 90%; background: #ee4400; }
+        .r-F   { width: 96%; background: #cc1100; }
+        .r-G   { width: 100%; background: #880000; }
+
+        /* Title block */
+        .title-block {
+            border-top: 2px solid var(--border);
+            background: #fff;
+        }
+        .tb-row {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--mid);
+            padding: 6px 16px; font-size: 10px;
+        }
+        .tb-row .lbl { color: var(--muted); font-weight: 600;}
+        .tb-row .val { font-weight: 800; font-family: var(--mono); }
+        .tb-big {
+            font-size: 16px; font-weight: 900;
+            text-align: center; padding: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+<div class="sheet">
+
+    <!-- ═══ VIEWER (top-left) ═══════════════════════════════════════════════ -->
+    <div class="viewer" id="viewer">
+        <div class="api-badge">
+            <div class="dot" id="api-dot"></div> <span id="api-txt">OFFLINE</span>
+        </div>
+        <div class="scan-banner" id="scan-banner"></div>
+    </div>
+
+    <!-- ═══ DATA ROW (bottom-left) ══════════════════════════════════════════ -->
+    <div class="data-row glass-panel">
+
+        <!-- Results -->
+        <div class="data-col" style="flex:0.9; border-right:2px solid var(--border);">
+            <h3>Results</h3>
+            <div class="kv"><span>Total Carbon (tCO₂e)</span><span class="v" id="v-total">—</span></div>
+            <div class="kv"><span>A1-A3 Manufacturing</span><span class="v" id="v-a1">—</span></div>
+            <div class="kv"><span>A4 Transport</span><span class="v" id="v-a4">—</span></div>
+            <div class="kv"><span>A5 Construction</span><span class="v" id="v-a5">—</span></div>
+            <div class="kv"><span>C1-C4 End of Life</span><span class="v" id="v-c14">—</span></div>
+            <div class="kv"><span>Module D</span><span class="v" id="v-d">—</span></div>
+            <div class="kv"><span>Sequestration</span><span class="v" id="v-seq">—</span></div>
+            <div style="margin-top:8px; font-size:7px; color:var(--muted);">
+                Uncertainty factor: ±10 % · EN 15978 · Aura Core LCA Engine
+            </div>
+        </div>
+
+        <!-- Category scan (lives before API call) -->
+        <div class="data-col" style="flex:0.9;">
+            <h3>Elements Scanned</h3>
+            <div class="kv"><span>Total Elements</span><span class="v" id="v-elem-count">—</span></div>
+            <div class="cat-grid" id="cat-grid">
+                <!-- filled dynamically -->
+            </div>
+            <div style="margin-top:8px;">
+                <h3 style="border:none; padding:0; margin-bottom:4px;">Sustainability Notes</h3>
+                <ul class="note-list">
+                    <li>Design connections for easy disassembly &amp; reuse.</li>
+                    <li>Request Environmental Product Declarations (EPDs).</li>
+                    <li>Source certified, local or reclaimed materials.</li>
+                    <li>Plan for mass stockpiling at End of Life.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Concrete -->
+        <div class="data-col">
+            <h3>Concrete</h3>
+            <p style="font-size:7px;color:var(--muted);line-height:1.4;margin-bottom:6px;">
+                Major source of embodied carbon. Reducing cement content is essential.
+            </p>
+            <div class="mat-stat">Avg. Intensity: <span id="conc-int">—</span> kgCO₂e/m³</div>
+            <div class="mat-stat">Total Mass: <span id="conc-mass">—</span> t</div>
+        </div>
+
+        <!-- Steel -->
+        <div class="data-col">
+            <h3>Steel</h3>
+            <p style="font-size:7px;color:var(--muted);line-height:1.4;margin-bottom:6px;">
+                Prioritise EAF-produced steel and reclaimed sections.
+            </p>
+            <div class="mat-stat">Avg. Intensity: <span id="steel-int">—</span> kgCO₂e/m³</div>
+            <div class="mat-stat">Total Mass: <span id="steel-mass">—</span> t</div>
+        </div>
+
+        <!-- Timber -->
+        <div class="data-col" style="border-right:none;">
+            <h3>Timber / Wood</h3>
+            <p style="font-size:7px;color:var(--muted);line-height:1.4;margin-bottom:6px;">
+                Low-carbon renewable. Sequesters carbon during service life.
+            </p>
+            <div class="mat-stat">Avg. Intensity: <span id="timber-int">—</span> kgCO₂e/m³</div>
+            <div class="mat-stat">Total Mass: <span id="timber-mass">—</span> t</div>
+        </div>
+    </div>
+
+    <!-- ═══ SIDE PANEL (right) ═══════════════════════════════════════════════ -->
+    <div class="side-panel glass-panel">
+        <div class="brand-block">
+            <div class="logo">AURA CORE</div>
+            <div class="sub">EcoBIM LCA Intelligence · EN 15978</div>
+        </div>
+
+        <div class="legend-block">
+            <div class="legend-title">Colour Legend</div>
+            <div class="legend-sub">Carbon Intensity (kgCO₂e / m³)</div>
+
+            <div class="gradient-wrap">
+                <div class="gradient-bar"></div>
+                <div class="gradient-labels">
+                    <div>&gt; 800</div>
+                    <div>550</div>
+                    <div>450</div>
+                    <div>350</div>
+                    <div>250</div>
+                    <div>150</div>
+                    <div>0</div>
+                </div>
+            </div>
+
+            <div class="score-line">
+                <span>SCORE</span>
+                <span id="score-val">— kgCO₂e/m²</span>
+            </div>
+
+            <div class="rating-wrap">
+                <div class="rating-label">Sustainability Rating</div>
+                <div class="r-bar r-App" id="r-App">A++</div>
+                <div class="r-bar r-Ap"  id="r-Ap" >A+</div>
+                <div class="r-bar r-A"   id="r-A"  >A</div>
+                <div class="r-bar r-B"   id="r-B"  >B</div>
+                <div class="r-bar r-C"   id="r-C"  >C</div>
+                <div class="r-bar r-D"   id="r-D"  >D</div>
+                <div class="r-bar r-E"   id="r-E"  >E</div>
+                <div class="r-bar r-F"   id="r-F"  >F</div>
+                <div class="r-bar r-G"   id="r-G"  >G</div>
+            </div>
+        </div>
+
+        <div class="title-block">
+            <div class="tb-big" id="proj-name">EcoBIM Project</div>
+            <div class="tb-row"><span class="lbl">Date</span><span class="val" id="tb-date">—</span></div>
+            <div class="tb-row"><span class="lbl">Engine</span><span class="val">EN 15978 · WLCA</span></div>
+            <div class="tb-row"><span class="lbl">Elements</span><span class="val" id="tb-elem">—</span></div>
+            <div class="tb-row"><span class="lbl">Checked by</span><span class="val">Aura AI</span></div>
+            <div class="tb-row" style="justify-content:flex-end; font-size:15px; font-weight:900; border-bottom:none;">S001</div>
+        </div>
+    </div>
+
+</div><!-- /sheet -->
+
+<script>
+// ── Utility ───────────────────────────────────────────────────────────────────
+const $  = id => document.getElementById(id);
+const fmt = (n, dec=2) => (isNaN(n) ? '—' : parseFloat(n).toFixed(dec));
+
+// ── Date ──────────────────────────────────────────────────────────────────────
+$('tb-date').textContent = new Date().toLocaleDateString();
+
+// ── API ping ──────────────────────────────────────────────────────────────────
+async function pingApi() {
+    try {
+        const r = await fetch('http://localhost:8000/', { signal: AbortSignal.timeout(2000) });
+        if (r.ok) { $('api-dot').classList.add('online'); $('api-txt').textContent = 'ONLINE'; return; }
+    } catch { /**/ }
+    $('api-dot').classList.remove('online');
+    $('api-txt').textContent = 'OFFLINE';
+}
+pingApi();
+setInterval(pingApi, 4000);
+
+// ── Category colour map (matches HeatmapVisualizer.cs) ───────────────────────
+const catColors = {
+    Walls:      '#50a0dc',
+    Floors:     '#00c896',
+    Roofs:      '#dc7820',
+    Columns:    '#dc3c3c',
+    Beams:      '#a03cc8',
+    Foundation: '#505050',
+    Other:      '#a0a0a0',
+};
+
+// ── Render: preview payload (from scan, before API) ───────────────────────────
+function renderPreview(data) {
+    $('watermark').style.display = 'none';
+    $('v-elem-count').textContent = data.scanned ?? '—';
+    $('tb-elem').textContent = data.scanned ?? '—';
+
+    const grid = $('cat-grid');
+    grid.innerHTML = '';
+
+    const banner = $('scan-banner');
+    banner.textContent = `✔ ${data.scanned} elements found — running WLCA engine…`;
+    banner.classList.add('visible');
+
+    if (data.groups) {
+        data.groups.forEach(g => {
+            const col = catColors[g.category] || '#aaa';
+            const chip = document.createElement('div');
+            chip.className = 'cat-chip';
+            chip.style.background = col + '22';
+            chip.style.borderLeft = `3px solid ${col}`;
+            chip.innerHTML = `<span style="color:${col};font-weight:700">${g.category}</span><span>${g.count}</span>`;
+            grid.appendChild(chip);
+        });
+    }
+
+    if (data.project) $('proj-name').textContent = data.project;
+}
+
+// ── Render: full WLCA payload (from API) ─────────────────────────────────────
+function renderFull(data) {
+    $('watermark').style.display = 'none';
+    $('scan-banner').classList.remove('visible');
+
+    const ov = data.overview;
+    if (!ov) return;
+
+    // Project info
+    if (ov.projectName) $('proj-name').textContent = ov.projectName;
+
+    // Carbon totals
+    $('v-total').textContent = fmt(ov.calculatedCarbonFootprint);
+    const ph = ov.phases || {};
+    $('v-a1').textContent   = fmt(ph['A1-A3']);
+    $('v-a4').textContent   = fmt(ph['A4']);
+    $('v-a5').textContent   = fmt(ph['A5']);
+    $('v-c14').textContent  = fmt(ph['C1-C4']);
+    $('v-d').textContent    = fmt(ph['D'] ?? 0);
+    $('v-seq').textContent  = fmt(ph['Sequestration']);
+
+    // Score + rating
+    const ta = ov.targetAlignment;
+    if (ta) {
+        $('score-val').textContent = fmt(ta.currentScore, 1) + ' kgCO₂e/m²';
+        setRating(ta.ratingFormat);
+    }
+
+    // Material groups (Concrete / Steel / Timber)
+    const matSums = ov.materialSummaries || [];
+    function setMatUI(catName, prefix) {
+        const item = matSums.find(m => m.matClass === catName);
+        if (!item) return;
+        const eMass = $(prefix + '-mass');
+        const eInt  = $(prefix + '-int');
+        if (eMass && item.totalMass > 0)    eMass.textContent = item.totalMass.toFixed(1);
+        if (eInt && item.avgIntensity > 0)  eInt.textContent = item.avgIntensity.toFixed(1);
+    }
+    setMatUI('Concrete', 'conc');
+    setMatUI('Steel', 'steel');
+    setMatUI('Timber', 'timber');
+
+    // Element count
+    const elemCount = data.calculation?.elements?.length ?? 0;
+    if (elemCount) { $('v-elem-count').textContent = elemCount; $('tb-elem').textContent = elemCount; }
+
+    // Category chips from calculation groups
+    const grid = $('cat-grid');
+    grid.innerHTML = '';
+    groups.forEach(g => {
+        const cat = g.category || 'Other';
+        const col = catColors[cat] || '#aaa';
+        const chip = document.createElement('div');
+        chip.className = 'cat-chip';
+        chip.style.background = col + '22';
+        chip.style.borderLeft = `3px solid ${col}`;
+        const cnt = (g.materials||[]).length;
+        chip.innerHTML = `<span style="color:${col};font-weight:700">${cat}</span><span>${cnt}</span>`;
+        grid.appendChild(chip);
+    });
+}
+
+// ── Rating highlighter ────────────────────────────────────────────────────────
+const ratingMap = { 'A++': 'r-App', 'A+': 'r-Ap', A:'r-A', B:'r-B', C:'r-C', D:'r-D', E:'r-E', F:'r-F', G:'r-G' };
+function setRating(r) {
+    document.querySelectorAll('.r-bar').forEach(el => el.classList.remove('active'));
+    const id = ratingMap[r];
+    if (id) $(id)?.classList.add('active');
+}
+
+// ── WebView2 message listener ─────────────────────────────────────────────────
+if (window.chrome?.webview) {
+    window.chrome.webview.addEventListener('message', ev => {
+        try {
+            const data = typeof ev.data === 'string' ? JSON.parse(ev.data) : ev.data;
+
+            if (data.preview) {
+                // Scan result (before API) — show category breakdown immediately
+                renderPreview(data);
+            } else {
+                // Full WLCA result
+                renderFull(data);
+                // Ask C# to apply precision heatmap in Revit
+                window.chrome.webview.postMessage('APPLY_HEATMAP');
+            }
+        } catch(err) {
+            console.error('Aura dashboard error:', err);
+        }
+    });
+}
+
+// ── Standalone browser demo (without Revit) ───────────────────────────────────
+if (!window.chrome?.webview) {
+    setTimeout(() => renderPreview({
+        preview: true,
+        project: 'AURA_20260408',
+        scanned: 47,
+        groups: [
+            { category:'Walls',      count:18 },
+            { category:'Floors',     count:11 },
+            { category:'Roofs',      count:4  },
+            { category:'Columns',    count:8  },
+            { category:'Beams',      count:6  },
+        ]
+    }), 800);
+
+    setTimeout(() => renderFull({
+        overview: {
+            projectName: 'Demo House — Revit Model',
+            calculatedCarbonFootprint: 312.4,
+            phases: { 'A1-A3': 251.2, 'A4': 19.8, 'A5': 6.9, 'C1-C4': 31.1, 'Sequestration': -2.1 },
+            targetAlignment: { currentScore: 194.3, ratingFormat: 'B' }
+        },
+        calculation: {
+            groups: [
+                { category:'Walls',   materialClass:'concrete', materials:[{ mass:'180000', vol:'72', total:'41.4' }] },
+                { category:'Floors',  materialClass:'concrete', materials:[{ mass:'95000',  vol:'38', total:'21.9' }] },
+                { category:'Columns', materialClass:'steel',    materials:[{ mass:'22000',  vol:'2.8', total:'33.9' }] },
+                { category:'Beams',   materialClass:'steel',    materials:[{ mass:'15000',  vol:'1.9', total:'23.1' }] },
+                { category:'Roofs',   materialClass:'timber',   materials:[{ mass:'8000',   vol:'16', total:'2.1'  }] },
+            ],
+            elements: Array.from({length:47}, (_,i) => ({ id:i+1 }))
+        }
+    }), 3000);
+}
+</script>
+</body>
+</html>

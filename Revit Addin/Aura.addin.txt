@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Aura BIM AI</Name>
+    <!-- Change this to the exact path of your compiled DLL during development -->
+    <!-- e.g., C:\YourPath\ECOBIM\Aura.Revit\src\bin\Debug\net8.0-windows\Aura.Revit.dll -->
+    <Assembly>Aura.Revit.dll</Assembly>
+    <AddInId>8A1F8B5A-4B2E-4D89-9A0B-7D1C3E4F5A6B</AddInId>
+    <FullClassName>Aura.Revit.App</FullClassName>
+    <VendorId>AURA</VendorId>
+    <VendorDescription>Aura Technologies - EcoBIM AI, www.aurabim.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
