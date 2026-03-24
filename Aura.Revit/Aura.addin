@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Aura BIM AI</Name>
+
+    <!--
+      DEVELOPMENT (source tree):
+        This relative path works when Revit loads the add-in directly from the build output.
+        Only use this if you have NOT run Install-AuraAddin.ps1.
+
+      DEPLOYMENT (installed via script or auto-deploy):
+        Install-AuraAddin.ps1 generates a new Aura.addin in %APPDATA%\Autodesk\Revit\Addins\2025\
+        with an absolute path pointing to the copy in that folder.
+        The auto-deploy MSBuild target also copies this file there after every build.
+
+      Revit 2025 Add-ins folder:
+        %APPDATA%\Autodesk\Revit\Addins\2025\
+    -->
+    <Assembly>Aura.Revit.dll</Assembly>
+
+    <!-- Must match the GUID in Install-AuraAddin.ps1 and the deployed manifest -->
+    <AddInId>8A1F8B5A-4B2E-4D89-9A0B-7D1C3E4F5A6B</AddInId>
+    <FullClassName>Aura.Revit.App</FullClassName>
+    <VendorId>AURA</VendorId>
+    <VendorDescription>Aura Technologies - EcoBIM AI, www.aurabim.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

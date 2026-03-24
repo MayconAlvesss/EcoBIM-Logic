@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "SgRk7R4PcLU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Administrador\\Downloads\\EcoBIM-Logic-main (2)\\EcoBIM-Logic-main\\Aura.Revit\\src\\Aura.Revit.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrador\\.nuget\\packages\\autodesk.revit.sdk\\2025.0.2.419\\autodesk.revit.sdk.2025.0.2.419.nupkg.sha512",
+    "C:\\Users\\Administrador\\.nuget\\packages\\microsoft.web.webview2\\1.0.2420.47\\microsoft.web.webview2.1.0.2420.47.nupkg.sha512",
+    "C:\\Users\\Administrador\\.nuget\\packages\\system.text.json\\8.0.6\\system.text.json.8.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}

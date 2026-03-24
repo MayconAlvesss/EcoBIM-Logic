@@ -1,0 +1,446 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0-windows7.0": {
+      "Autodesk.Revit.SDK/2025.0.2.419": {
+        "type": "package",
+        "compile": {
+          "ref/net8.0/AdWindows.dll": {},
+          "ref/net8.0/RevitAPI.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          },
+          "ref/net8.0/RevitAPIBrowserUtils.dll": {},
+          "ref/net8.0/RevitAPIFoundation.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitAPIIFC.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          },
+          "ref/net8.0/RevitAPILink.dll": {},
+          "ref/net8.0/RevitAPIMacros.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          },
+          "ref/net8.0/RevitAPIMacrosInterop.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitAPIMacrosInteropAPI.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitAPISteel.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitAPIUI.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          },
+          "ref/net8.0/RevitAPIUILink.dll": {},
+          "ref/net8.0/RevitAPIUIMacros.dll": {
+            "related": ".runtimeconfig.json;.xml"
+          },
+          "ref/net8.0/RevitAPIUIMacrosInterop.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitAPIUIMacrosInteropAPI.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitAddInUtility.dll": {
+            "related": ".xml"
+          },
+          "ref/net8.0/RevitAssemblyResolver.dll": {},
+          "ref/net8.0/RevitDB.dll": {},
+          "ref/net8.0/RevitDBAPI.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitDBCore.dll": {},
+          "ref/net8.0/RevitDBCoreAPI.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitMFC.dll": {},
+          "ref/net8.0/RevitMFCAPI.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitMaterialUI3.dll": {},
+          "ref/net8.0/RevitNET.dll": {
+            "related": ".runtimeconfig.json"
+          },
+          "ref/net8.0/RevitUI.dll": {},
+          "ref/net8.0/RevitUIAPI.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2/1.0.2420.47": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Core.dll": {
+            "related": ".xml"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.WinForms.dll": {
+            "related": ".xml"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Wpf.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Core.dll": {
+            "related": ".xml"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.WinForms.dll": {
+            "related": ".xml"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Wpf.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/Microsoft.Web.WebView2.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/WebView2Loader.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/WebView2Loader.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/WebView2Loader.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "System.Text.Json/8.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/System.Text.Json.targets": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Autodesk.Revit.SDK/2025.0.2.419": {
+      "sha512": "AolSqTnrNZKO/2oFNC4FpELumdz1DRDFHETr3r1PK3HOmBEisNIJms0YIdBkegw2vS+PXKPAes1Q+12L6lRqqA==",
+      "type": "package",
+      "path": "autodesk.revit.sdk/2025.0.2.419",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "Revit.png",
+        "autodesk.revit.sdk.2025.0.2.419.nupkg.sha512",
+        "autodesk.revit.sdk.nuspec",
+        "ref/net8.0/AdWindows.dll",
+        "ref/net8.0/RevitAPI.dll",
+        "ref/net8.0/RevitAPI.runtimeconfig.json",
+        "ref/net8.0/RevitAPI.xml",
+        "ref/net8.0/RevitAPIBrowserUtils.dll",
+        "ref/net8.0/RevitAPIFoundation.dll",
+        "ref/net8.0/RevitAPIFoundation.runtimeconfig.json",
+        "ref/net8.0/RevitAPIIFC.dll",
+        "ref/net8.0/RevitAPIIFC.runtimeconfig.json",
+        "ref/net8.0/RevitAPIIFC.xml",
+        "ref/net8.0/RevitAPILink.dll",
+        "ref/net8.0/RevitAPIMacros.dll",
+        "ref/net8.0/RevitAPIMacros.runtimeconfig.json",
+        "ref/net8.0/RevitAPIMacros.xml",
+        "ref/net8.0/RevitAPIMacrosInterop.dll",
+        "ref/net8.0/RevitAPIMacrosInterop.runtimeconfig.json",
+        "ref/net8.0/RevitAPIMacrosInteropAPI.dll",
+        "ref/net8.0/RevitAPIMacrosInteropAPI.runtimeconfig.json",
+        "ref/net8.0/RevitAPISteel.dll",
+        "ref/net8.0/RevitAPISteel.runtimeconfig.json",
+        "ref/net8.0/RevitAPIUI.dll",
+        "ref/net8.0/RevitAPIUI.runtimeconfig.json",
+        "ref/net8.0/RevitAPIUI.xml",
+        "ref/net8.0/RevitAPIUILink.dll",
+        "ref/net8.0/RevitAPIUIMacros.dll",
+        "ref/net8.0/RevitAPIUIMacros.runtimeconfig.json",
+        "ref/net8.0/RevitAPIUIMacros.xml",
+        "ref/net8.0/RevitAPIUIMacrosInterop.dll",
+        "ref/net8.0/RevitAPIUIMacrosInterop.runtimeconfig.json",
+        "ref/net8.0/RevitAPIUIMacrosInteropAPI.dll",
+        "ref/net8.0/RevitAPIUIMacrosInteropAPI.runtimeconfig.json",
+        "ref/net8.0/RevitAddInUtility.dll",
+        "ref/net8.0/RevitAddInUtility.xml",
+        "ref/net8.0/RevitAssemblyResolver.dll",
+        "ref/net8.0/RevitDB.dll",
+        "ref/net8.0/RevitDBAPI.dll",
+        "ref/net8.0/RevitDBAPI.runtimeconfig.json",
+        "ref/net8.0/RevitDBCore.dll",
+        "ref/net8.0/RevitDBCoreAPI.dll",
+        "ref/net8.0/RevitDBCoreAPI.runtimeconfig.json",
+        "ref/net8.0/RevitMFC.dll",
+        "ref/net8.0/RevitMFCAPI.dll",
+        "ref/net8.0/RevitMFCAPI.runtimeconfig.json",
+        "ref/net8.0/RevitMaterialUI3.dll",
+        "ref/net8.0/RevitNET.dll",
+        "ref/net8.0/RevitNET.runtimeconfig.json",
+        "ref/net8.0/RevitUI.dll",
+        "ref/net8.0/RevitUIAPI.dll",
+        "ref/net8.0/RevitUIAPI.runtimeconfig.json"
+      ]
+    },
+    "Microsoft.Web.WebView2/1.0.2420.47": {
+      "sha512": "XYZjxkepD+MwmIdeiWqjm2T8x4UmVZq4CDKUe7U6L1r+9VGo2Q88OeEgvyLYtgvebGGuSP6D74Z3wxdRwjH8IQ==",
+      "type": "package",
+      "path": "microsoft.web.webview2/1.0.2420.47",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "NOTICE.txt",
+        "WebView2.idl",
+        "WebView2.tlb",
+        "build/Common.targets",
+        "build/Microsoft.Web.WebView2.targets",
+        "build/WebView2Rules.Project.xml",
+        "build/native/Microsoft.Web.WebView2.targets",
+        "build/native/arm64/WebView2Loader.dll",
+        "build/native/arm64/WebView2Loader.dll.lib",
+        "build/native/arm64/WebView2LoaderStatic.lib",
+        "build/native/include-winrt/WebView2Interop.h",
+        "build/native/include-winrt/WebView2Interop.idl",
+        "build/native/include-winrt/WebView2Interop.tlb",
+        "build/native/include/WebView2.h",
+        "build/native/include/WebView2EnvironmentOptions.h",
+        "build/native/x64/WebView2Loader.dll",
+        "build/native/x64/WebView2Loader.dll.lib",
+        "build/native/x64/WebView2LoaderStatic.lib",
+        "build/native/x86/WebView2Loader.dll",
+        "build/native/x86/WebView2Loader.dll.lib",
+        "build/native/x86/WebView2LoaderStatic.lib",
+        "build/wv2winrt.targets",
+        "lib/Microsoft.Web.WebView2.Core.winmd",
+        "lib/net45/Microsoft.Web.WebView2.Core.dll",
+        "lib/net45/Microsoft.Web.WebView2.Core.xml",
+        "lib/net45/Microsoft.Web.WebView2.WinForms.dll",
+        "lib/net45/Microsoft.Web.WebView2.WinForms.xml",
+        "lib/net45/Microsoft.Web.WebView2.Wpf.dll",
+        "lib/net45/Microsoft.Web.WebView2.Wpf.xml",
+        "lib/netcoreapp3.0/Microsoft.Web.WebView2.Core.dll",
+        "lib/netcoreapp3.0/Microsoft.Web.WebView2.Core.xml",
+        "lib/netcoreapp3.0/Microsoft.Web.WebView2.WinForms.dll",
+        "lib/netcoreapp3.0/Microsoft.Web.WebView2.WinForms.xml",
+        "lib/netcoreapp3.0/Microsoft.Web.WebView2.Wpf.dll",
+        "lib/netcoreapp3.0/Microsoft.Web.WebView2.Wpf.xml",
+        "microsoft.web.webview2.1.0.2420.47.nupkg.sha512",
+        "microsoft.web.webview2.nuspec",
+        "runtimes/win-arm64/native/WebView2Loader.dll",
+        "runtimes/win-arm64/native_uap/Microsoft.Web.WebView2.Core.dll",
+        "runtimes/win-x64/native/WebView2Loader.dll",
+        "runtimes/win-x64/native_uap/Microsoft.Web.WebView2.Core.dll",
+        "runtimes/win-x86/native/WebView2Loader.dll",
+        "runtimes/win-x86/native_uap/Microsoft.Web.WebView2.Core.dll",
+        "tools/VisualStudioToolsManifest.xml",
+        "tools/wv2winrt/Antlr3.Runtime.dll",
+        "tools/wv2winrt/Antlr4.StringTemplate.dll",
+        "tools/wv2winrt/System.Buffers.dll",
+        "tools/wv2winrt/System.CommandLine.DragonFruit.dll",
+        "tools/wv2winrt/System.CommandLine.Rendering.dll",
+        "tools/wv2winrt/System.CommandLine.dll",
+        "tools/wv2winrt/System.Memory.dll",
+        "tools/wv2winrt/System.Numerics.Vectors.dll",
+        "tools/wv2winrt/System.Runtime.CompilerServices.Unsafe.dll",
+        "tools/wv2winrt/codegen_util.dll",
+        "tools/wv2winrt/concrt140_app.dll",
+        "tools/wv2winrt/cs/System.CommandLine.resources.dll",
+        "tools/wv2winrt/de/System.CommandLine.resources.dll",
+        "tools/wv2winrt/es/System.CommandLine.resources.dll",
+        "tools/wv2winrt/fr/System.CommandLine.resources.dll",
+        "tools/wv2winrt/it/System.CommandLine.resources.dll",
+        "tools/wv2winrt/ja/System.CommandLine.resources.dll",
+        "tools/wv2winrt/ko/System.CommandLine.resources.dll",
+        "tools/wv2winrt/msvcp140_1_app.dll",
+        "tools/wv2winrt/msvcp140_2_app.dll",
+        "tools/wv2winrt/msvcp140_app.dll",
+        "tools/wv2winrt/pl/System.CommandLine.resources.dll",
+        "tools/wv2winrt/pt-BR/System.CommandLine.resources.dll",
+        "tools/wv2winrt/ru/System.CommandLine.resources.dll",
+        "tools/wv2winrt/tr/System.CommandLine.resources.dll",
+        "tools/wv2winrt/type_hierarchy.dll",
+        "tools/wv2winrt/vcamp140_app.dll",
+        "tools/wv2winrt/vccorlib140_app.dll",
+        "tools/wv2winrt/vcomp140_app.dll",
+        "tools/wv2winrt/vcruntime140_app.dll",
+        "tools/wv2winrt/winrt_winmd.dll",
+        "tools/wv2winrt/winrt_winmd.winmd",
+        "tools/wv2winrt/wv2winrt.exe",
+        "tools/wv2winrt/wv2winrt.exe.config",
+        "tools/wv2winrt/wv2winrt.xml",
+        "tools/wv2winrt/zh-Hans/System.CommandLine.resources.dll",
+        "tools/wv2winrt/zh-Hant/System.CommandLine.resources.dll"
+      ]
+    },
+    "System.Text.Json/8.0.6": {
+      "sha512": "BvSpVBsVN9b+Y+wONbvJOHd1HjXQf33+XiC28ZMOwRsYb42mz3Q8YHnpTSwpwJLqYCMqM+0UUVC3V+pi25XfkQ==",
+      "type": "package",
+      "path": "system.text.json/8.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.0/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.4/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "buildTransitive/net461/System.Text.Json.targets",
+        "buildTransitive/net462/System.Text.Json.targets",
+        "buildTransitive/net6.0/System.Text.Json.targets",
+        "buildTransitive/netcoreapp2.0/System.Text.Json.targets",
+        "buildTransitive/netstandard2.0/System.Text.Json.targets",
+        "lib/net462/System.Text.Json.dll",
+        "lib/net462/System.Text.Json.xml",
+        "lib/net6.0/System.Text.Json.dll",
+        "lib/net6.0/System.Text.Json.xml",
+        "lib/net7.0/System.Text.Json.dll",
+        "lib/net7.0/System.Text.Json.xml",
+        "lib/net8.0/System.Text.Json.dll",
+        "lib/net8.0/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.8.0.6.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0-windows7.0": [
+      "Autodesk.Revit.SDK >= 2025.*",
+      "Microsoft.Web.WebView2 >= 1.0.2420.47",
+      "System.Text.Json >= 8.0.*"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Administrador\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Administrador\\Downloads\\EcoBIM-Logic-main (2)\\EcoBIM-Logic-main\\Aura.Revit\\src\\Aura.Revit.csproj",
+      "projectName": "Aura.Revit",
+      "projectPath": "C:\\Users\\Administrador\\Downloads\\EcoBIM-Logic-main (2)\\EcoBIM-Logic-main\\Aura.Revit\\src\\Aura.Revit.csproj",
+      "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Administrador\\Downloads\\EcoBIM-Logic-main (2)\\EcoBIM-Logic-main\\Aura.Revit\\src\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0-windows"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0-windows7.0": {
+        "targetAlias": "net8.0-windows",
+        "dependencies": {
+          "Autodesk.Revit.SDK": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[2025.*, )"
+          },
+          "Microsoft.Web.WebView2": {
+            "target": "Package",
+            "version": "[1.0.2420.47, )"
+          },
+          "System.Text.Json": {
+            "target": "Package",
+            "version": "[8.0.*, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.419/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

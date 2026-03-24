@@ -1,0 +1,36 @@
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\bin\Debug\net8.0-windows\Aura.Revit.deps.json
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\bin\Debug\net8.0-windows\Aura.Revit.dll
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\bin\Debug\net8.0-windows\Aura.Revit.pdb
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\UI\DashboardView.baml
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\UI\DashboardView.g.cs
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit_MarkupCompile.cache
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.g.resources
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.AssemblyInfoInputs.cache
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.AssemblyInfo.cs
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.csproj.CoreCompileInputs.cache
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.sourcelink.json
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.dll
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\refint\Aura.Revit.dll
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.pdb
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\ref\Aura.Revit.dll
+C:\Users\medic\OneDrive\Área de Trabalho\ECOBIM\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.csproj.AssemblyReference.cache
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\bin\Debug\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\bin\Debug\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\bin\Debug\net8.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\bin\Debug\net8.0-windows\Aura.Revit.deps.json
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\bin\Debug\net8.0-windows\Aura.Revit.dll
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\bin\Debug\net8.0-windows\Aura.Revit.pdb
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.csproj.AssemblyReference.cache
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\UI\DashboardView.baml
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\UI\DashboardView.g.cs
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit_MarkupCompile.cache
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.g.resources
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.AssemblyInfoInputs.cache
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.AssemblyInfo.cs
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.dll
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\refint\Aura.Revit.dll
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\Aura.Revit.pdb
+C:\Users\Administrador\Downloads\EcoBIM-Logic-main (2)\EcoBIM-Logic-main\Aura.Revit\src\obj\Debug\net8.0-windows\ref\Aura.Revit.dll

@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Platforms>x64</Platforms>
+    <PublishSelfContained>false</PublishSelfContained>
+    <AssemblyName>Aura.Revit</AssemblyName>
+    <RootNamespace>Aura.Revit</RootNamespace>
+    <NoWarn>$(NoWarn);MSB3246</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autodesk.Revit.SDK" Version="2025.*" PrivateAssets="All" />
+    <PackageReference Include="System.Text.Json" Version="8.0.*" />
+    <!-- Support for embeddable Web Engine -->
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2420.47" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Remove="App.xaml" />
+    <Compile Remove="app.xaml.cs" />
+    <None Include="App.xaml" />
+    <None Include="app.xaml.cs" />
+  </ItemGroup>
+
+  <Target Name="DeployToRevitAddins" AfterTargets="Build">
+    <PropertyGroup>
+      <RevitAddinsDir>$(AppData)\Autodesk\Revit\Addins\2025\</RevitAddinsDir>
+    </PropertyGroup>
+
+    <MakeDir Directories="$(RevitAddinsDir)" Condition="!Exists('$(RevitAddinsDir)')"/>
+
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(RevitAddinsDir)" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="$(ProjectDir)..\Aura.addin" DestinationFolder="$(RevitAddinsDir)" SkipUnchangedFiles="true"/>
+
+    <Message Text="[Aura] Add-in deployed to $(RevitAddinsDir)" Importance="High"/>
+  </Target>
+
+</Project>

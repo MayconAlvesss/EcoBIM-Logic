@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Administrador\\Downloads\\EcoBIM-Logic-main (2)\\EcoBIM-Logic-main\\Aura.Revit\\src\\Aura.Revit.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Administrador\\Downloads\\EcoBIM-Logic-main (2)\\EcoBIM-Logic-main\\Aura.Revit\\src\\Aura.Revit.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrador\\Downloads\\EcoBIM-Logic-main (2)\\EcoBIM-Logic-main\\Aura.Revit\\src\\Aura.Revit.csproj",
+        "projectName": "Aura.Revit",
+        "projectPath": "C:\\Users\\Administrador\\Downloads\\EcoBIM-Logic-main (2)\\EcoBIM-Logic-main\\Aura.Revit\\src\\Aura.Revit.csproj",
+        "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrador\\Downloads\\EcoBIM-Logic-main (2)\\EcoBIM-Logic-main\\Aura.Revit\\src\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Autodesk.Revit.SDK": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2025.*, )"
+            },
+            "Microsoft.Web.WebView2": {
+              "target": "Package",
+              "version": "[1.0.2420.47, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[8.0.*, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.419/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
