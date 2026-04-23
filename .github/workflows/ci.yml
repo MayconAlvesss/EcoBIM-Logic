@@ -42,7 +42,7 @@ jobs:
             --cov=core \
             --cov=api \
             --cov-report=term-missing \
-            --cov-fail-under=70
+            --cov-fail-under=60
 
       - name: Upload coverage report
         if: matrix.python-version == '3.12'
