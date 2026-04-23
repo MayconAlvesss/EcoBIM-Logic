@@ -2,7 +2,6 @@ import sys
 import os
 import json
 import asyncio
-import logging
 from datetime import datetime
 
 # Path configuration to ensure Python finds the ECOBIM package
@@ -47,7 +46,7 @@ async def run_decarbonization_pipeline():
     revit_sync = RevitInjector()
 
     processed_results = []
-    
+
     logger.info(f"Processing {len(bim_elements)} elements using the complete structure...")
 
     # 3. PROCESSING LOOP (Core + ML)
@@ -58,7 +57,7 @@ async def run_decarbonization_pipeline():
             volume=element['volume_m3'],
             material_cat=element['category']
         )
-        
+
         # Lifecycle Analysis (A4 + Biogenic Sequestration)
         lifecycle_data = lifecycle.analyze_stages(element, impact_data)
 

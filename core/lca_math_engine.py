@@ -32,11 +32,11 @@ Key references for default factors:
 import pandas as pd
 import numpy as np
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
 from .exceptions import VolumeCalculationError
-from .project_config import ProjectConfig, VEHICLE_OPTIONS
+from .project_config import ProjectConfig
 
 logger = logging.getLogger(__name__)
 

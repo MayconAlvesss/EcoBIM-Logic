@@ -15,10 +15,10 @@ class JSONFormatter(logging.Formatter):
             "env": settings.ENVIRONMENT,
             "service": settings.APP_NAME
         }
-        
+
         if hasattr(record, 'error_code'):
             log_record['error_code'] = getattr(record, 'error_code')
-            
+
         if record.exc_info:
             log_record['exception'] = self.formatException(record.exc_info)
 
@@ -27,7 +27,7 @@ class JSONFormatter(logging.Formatter):
 def setup_logger() -> logging.Logger:
     logger = logging.getLogger()
     handler = logging.StreamHandler(sys.stdout)
-    
+
     if settings.DEBUG_MODE:
         logger.setLevel(logging.DEBUG)
         # simplified the local log format, it was too long
@@ -35,7 +35,7 @@ def setup_logger() -> logging.Logger:
     else:
         logger.setLevel(logging.INFO)
         handler.setFormatter(JSONFormatter())
-        
+
     logger.addHandler(handler)
     return logger
 

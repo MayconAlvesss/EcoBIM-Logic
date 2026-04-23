@@ -31,7 +31,7 @@ def gerar_relatorio_pdf(results_df, total_carbon, recommender):
 
     pdf = FPDF()
     pdf.add_page()
-    
+
     # Header
     pdf.set_font("Arial", 'B', 16)
     pdf.cell(0, 10, "AURA CORE - INTEGRATED CARBON REPORT", ln=True, align='C')
@@ -44,12 +44,12 @@ def gerar_relatorio_pdf(results_df, total_carbon, recommender):
         mat_id = row['material_id']
         carbon = row['embodied_carbon_kgco2e']
         mass = row['mass_kg']
-        
+
         status = "ALERT (High Impact)" if carbon > 500 else "OPTIMIZED"
 
         pdf.set_font("Arial", 'B', 11)
         pdf.cell(0, 8, f"Element: {elem_id} | Material: {mat_id}", ln=True)
-        
+
         pdf.set_font("Arial", '', 11)
         pdf.cell(0, 8, f"Mass: {mass:,.2f} kg | Emission: {carbon:,.2f} kgCO2e [{status}]", ln=True)
 
@@ -64,7 +64,7 @@ def gerar_relatorio_pdf(results_df, total_carbon, recommender):
                 pdf.cell(0, 8, f"   > AI Suggestion: Replace with '{best['name']}'", ln=True)
                 pdf.cell(0, 8, f"   > Impact: Reduces CO2e emissions by {reduction:.1f}%", ln=True)
                 pdf.set_text_color(0, 0, 0) # Back to black
-        
+
         pdf.ln(5)
 
     # Footer with total
@@ -136,7 +136,7 @@ def run_audit():
         carbon = row['embodied_carbon_kgco2e']
         mass = row['mass_kg']
         total_carbon += carbon
-        
+
         # Classification Logic
         if carbon > 500:
             status = "⚠️ ALERT (High Impact)"

@@ -5,14 +5,13 @@ For CI/CD, use tests/test_lca_math_engine.py instead.
 """
 import pytest
 import pandas as pd
-import numpy as np
 import sys
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
 
-from core.lca_math_engine import LCAMathEngine, ProjectSettings, _classify_material
+from core.lca_math_engine import LCAMathEngine, ProjectSettings
 from core.exceptions import VolumeCalculationError
 
 @pytest.fixture

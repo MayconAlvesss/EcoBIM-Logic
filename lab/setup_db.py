@@ -1,5 +1,4 @@
 import sqlite3
-import pandas as pd
 import os
 
 def create_mock_database():
@@ -11,11 +10,11 @@ def create_mock_database():
     """
     print("Setting up EcoBIM local database...")
     db_path = "ecobim_materials.db"
-    
+
     # remove old db if it exists to start fresh
     if os.path.exists(db_path):
         os.remove(db_path)
-        
+
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 

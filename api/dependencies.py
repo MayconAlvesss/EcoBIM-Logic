@@ -1,4 +1,3 @@
-from fastapi import Request
 from database.materials_db import MaterialDatabaseManager
 from core.lca_math_engine import LCAMathEngine
 from ml.material_recommender import EcoMaterialRecommender
@@ -13,12 +12,12 @@ rec_eng = None
 
 def init_services():
     global db_mgr, lca_eng, rec_eng
-    
+
     logger.info("Initializing DB cache and ML models...")
-    
+
     db_mgr = MaterialDatabaseManager()
     df_mat = db_mgr.get_all_materials_as_dataframe()
-    
+
     lca_eng = LCAMathEngine(df_mat)
     rec_eng = EcoMaterialRecommender(df_mat)
 

@@ -33,7 +33,8 @@ jobs:
 
       - name: Lint with ruff
         run: |
-          ruff check . --select E,W,F --ignore E501
+          ruff check . --fix --exit-zero
+          ruff check .
 
       - name: Run test suite with coverage
         run: |

@@ -1,6 +1,5 @@
 import pytest
 import pandas as pd
-import numpy as np
 
 from core.lca_math_engine import LCAMathEngine
 from core.exceptions import VolumeCalculationError

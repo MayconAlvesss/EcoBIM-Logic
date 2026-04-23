@@ -22,9 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 sys.path.insert(0, BASE_DIR)
 
 import pandas as pd
-import numpy as np
 
-from core.lca_math_engine import LCAMathEngine, ProjectSettings
+from core.lca_math_engine import LCAMathEngine
 from core.project_config import ProjectConfig
 
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "outputs")
@@ -130,7 +129,6 @@ def make_rating_bar(current_score, scores_dict) -> bytes:
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    import matplotlib.patches as mpatches
 
     grades   = ["A++", "A+", "A", "B", "C", "D", "E", "F", "G"]
     grade_colors = ['#00820F', '#1DA41E', '#56B430', '#ADC62B',
@@ -205,7 +203,7 @@ def generate_pdf(result_df: pd.DataFrame, config: ProjectConfig, output_path: st
         # Footer
         canvas.setFillColor(C_GREY)
         canvas.setFont("Helvetica", 7)
-        canvas.drawString(15*mm, 8*mm, f"EcoBIM WLCA Report  |  EN 15978 / EN 15804 / ISO 21930")
+        canvas.drawString(15*mm, 8*mm, "EcoBIM WLCA Report  |  EN 15978 / EN 15804 / ISO 21930")
         canvas.drawRightString(A4[0]-15*mm, 8*mm, f"Page {doc.page}")
         canvas.restoreState()
 
@@ -620,7 +618,7 @@ def main():
     ts   = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
     path = os.path.join(OUTPUT_DIR, f'WLCA_Report_{ts}.pdf')
 
-    print(f"Generating PDF report...")
+    print("Generating PDF report...")
     out = generate_pdf(result_df, config, path)
 
     if out:

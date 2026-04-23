@@ -6,9 +6,7 @@ Run from project root:
     pytest tests/ -v
 """
 import pytest
-import math
 import pandas as pd
-import numpy as np
 import sys
 import os
 
@@ -17,9 +15,8 @@ sys.path.insert(0, BASE_DIR)
 
 from core.lca_math_engine import (
     LCAMathEngine, ProjectSettings, _classify_material,
-    WASTE_FACTORS, EOL_FACTORS, SERVICE_LIFE,
-    TRANSPORT_FACTORS, DEFAULT_TRANSPORT_A4, DEFAULT_TRANSPORT_VEHICLE,
-    MAINTENANCE_ANNUAL_FACTORS, BIOGENIC_SEQ_FACTORS,
+    WASTE_FACTORS, TRANSPORT_FACTORS, DEFAULT_TRANSPORT_A4, DEFAULT_TRANSPORT_VEHICLE,
+    MAINTENANCE_ANNUAL_FACTORS,
 )
 from core.exceptions import VolumeCalculationError
 

@@ -7,28 +7,28 @@ class ESGReportingEngine:
     @staticmethod
     def generate_executive_summary(df):
         logger.info('generating esg summary')
-        
+
         # using float() because pandas types sometimes mess up the json serialization
         vol_total = float(df['volume_m3'].sum())
         a1_a3 = float(df['embodied_carbon_kgco2e'].sum())
-        
-        # TODO: phase a4 and c are mocked right now. 
+
+        # TODO: phase a4 and c are mocked right now.
         # frontend breaks if these are missing so using get() with 0.0 as a fallback
         a4 = float(df.get('transport_a4_kgco2e', pd.Series([0.0])).sum())
         c = float(df.get('end_of_life_c_kgco2e', pd.Series([0.0])).sum())
 
         grand_total = a1_a3 + a4 + c
-        
+
         cat_group = df.groupby("category")['embodied_carbon_kgco2e'].sum().to_dict()
 
         # management wants the top 3 worst elements for the dashboard
         top_3 = df.nlargest(3, 'embodied_carbon_kgco2e')
         emitters = [
             {
-                "element_id": r.element_id, 
-                'material': getattr(r, 'name', r.material_id), 
+                "element_id": r.element_id,
+                'material': getattr(r, 'name', r.material_id),
                 "carbon_impact": round(r.embodied_carbon_kgco2e, 2)
-            } 
+            }
             for r in top_3.itertuples()
         ]
 

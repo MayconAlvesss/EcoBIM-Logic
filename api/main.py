@@ -1,10 +1,9 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 import uvicorn
 import sqlite3
 import pandas as pd
-from typing import List, Dict, Optional
+from typing import Dict
 import os
 import sys
 import logging
@@ -69,7 +68,7 @@ async def process_model(payload: Dict):
 
     db_df = load_db_to_dataframe()
     engine = LCAMathEngine(db_df)
-    
+
     # Optional Recommender
     recommender = EcoMaterialRecommender(db_df)
 

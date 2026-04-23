@@ -37,12 +37,12 @@ class EcobimAuditor:
         try:
             env = os.environ.copy()
             env["PYTHONPATH"] = BASE_DIR
-            
+
             result = subprocess.run(
-                [sys.executable, "-m", "pytest", TESTS_DIR], 
-                capture_output=True, 
-                text=True, 
-                encoding='utf-8', 
+                [sys.executable, "-m", "pytest", TESTS_DIR],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
                 errors='replace',
                 env=env
             )
@@ -66,10 +66,10 @@ class EcobimAuditor:
         try:
             # Force UTF-8 and character replacement to prevent decoding crash
             result = subprocess.run(
-                ["dotnet", "build", DOTNET_PROJECT], 
-                capture_output=True, 
-                text=True, 
-                encoding='utf-8', 
+                ["dotnet", "build", DOTNET_PROJECT],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
                 errors='replace'
             )
             if result.returncode == 0:
@@ -91,7 +91,7 @@ class EcobimAuditor:
             # PYTHONPATH ensures uvicorn finds the 'api' module
             env = os.environ.copy()
             env["PYTHONPATH"] = BASE_DIR
-            
+
             self.api_process = subprocess.Popen(
                 [sys.executable, "-m", "uvicorn", "api.main:app", "--host", "127.0.0.1", "--port", "8000"],
                 stdout=subprocess.DEVNULL,
@@ -99,7 +99,7 @@ class EcobimAuditor:
                 cwd=BASE_DIR,
                 env=env
             )
-            
+
             # Wait for API to come online (10s timeout)
             for _ in range(10):
                 try:
@@ -108,7 +108,7 @@ class EcobimAuditor:
                         return True
                 except:
                     time.sleep(1)
-            
+
             self.log("The API took too long to respond or did not start.", "ERROR")
             return False
         except Exception as e:
@@ -124,10 +124,10 @@ class EcobimAuditor:
 
         try:
             result = subprocess.run(
-                [sys.executable, SIMULATOR_SCRIPT], 
-                capture_output=True, 
-                text=True, 
-                encoding='utf-8', 
+                [sys.executable, SIMULATOR_SCRIPT],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
                 errors='replace'
             )
             if "success" in result.stdout.lower() or result.returncode == 0:
@@ -156,9 +156,9 @@ class EcobimAuditor:
         print("\n" + "="*50)
         print("   ECOBIM SYSTEM AUDIT - FULL CHECKUP   ")
         print("="*50)
-        
+
         self.check_dependencies()
-        
+
         # Tests that do not depend on the API being online
         results = {
             "Unit Tests": self.run_unit_tests(),

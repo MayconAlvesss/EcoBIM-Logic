@@ -33,7 +33,7 @@ class BIMDataPipeline:
                 return pd.DataFrame()
 
             df = pd.DataFrame(data)
-            
+
             req_cols = ['element_id', 'revit_category', 'volume_m3']
             missing = [c for c in req_cols if c not in df.columns]
             if missing:
@@ -43,9 +43,9 @@ class BIMDataPipeline:
             # cleanup and map categories
             df['volume_m3'] = pd.to_numeric(df['volume_m3'], errors='coerce').fillna(0)
             df = df[df['volume_m3'] > 0].copy()
-            
+
             df['category'] = df['revit_category'].map(self.category_map).fillna("Unresolved")
-            
+
             # generic fallback
             df['material_id'] = df['category'] + "_Standard"
 

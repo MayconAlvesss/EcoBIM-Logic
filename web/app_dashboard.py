@@ -3,7 +3,6 @@ import pandas as pd
 import json
 import os
 import sys
-import plotly.express as px
 import plotly.graph_objects as go
 
 # Fix path for local runs

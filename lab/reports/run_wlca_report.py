@@ -13,7 +13,6 @@ Run from project root:
 import os
 import sys
 import json
-import math
 import datetime
 import traceback
 
@@ -22,18 +21,14 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf-8', buffering=1)
 
 import pandas as pd
-import numpy as np
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, BASE_DIR)
 
 from core.lca_math_engine import (
-    LCAMathEngine, ProjectSettings, _classify_material,
-    TRANSPORT_FACTORS, DEFAULT_TRANSPORT_A4, DEFAULT_TRANSPORT_VEHICLE,
-    WASTE_FACTORS, EOL_FACTORS, MAINTENANCE_ANNUAL_FACTORS,
-    SERVICE_LIFE, BIOGENIC_SEQ_FACTORS,
+    LCAMathEngine, ProjectSettings, TRANSPORT_FACTORS, DEFAULT_TRANSPORT_A4, DEFAULT_TRANSPORT_VEHICLE,
+    WASTE_FACTORS, MAINTENANCE_ANNUAL_FACTORS,
 )
-from core.exceptions import VolumeCalculationError
 
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "outputs")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -315,14 +310,14 @@ def write_markdown(report_data: dict, test_results: list, md_path: str):
     lines = [
         "# EcoBIM — WLCA Engine Audit Report",
         f"**Generated:** {TIMESTAMP}  ",
-        f"**Standard compliance:** EN 15978:2011 / EN 15804:2012+A2 / ISO 21930:2017  ",
+        "**Standard compliance:** EN 15978:2011 / EN 15804:2012+A2 / ISO 21930:2017  ",
         "",
         "---",
         "",
         "## Project Overview",
         "",
-        f"| Metric | Value |",
-        f"|--------|-------|",
+        "| Metric | Value |",
+        "|--------|-------|",
         f"| Elements analysed | {proj['element_count']} |",
         f"| GIA | {proj['GIA_m2']:,.0f} m² |",
         f"| Reference Study Period | {proj['RSP_years']} years |",
@@ -356,8 +351,8 @@ def write_markdown(report_data: dict, test_results: list, md_path: str):
         "",
         "## Test Summary",
         "",
-        f"| Total Checks | ✅ Passed | ❌ Failed | Pass Rate |",
-        f"|---|---|---|---|",
+        "| Total Checks | ✅ Passed | ❌ Failed | Pass Rate |",
+        "|---|---|---|---|",
         f"| {total} | {len(passed)} | {len(failed)} | **{rate} %** |",
         "",
     ]
@@ -453,7 +448,7 @@ def main():
 
     failures = [r for r in results if not r["PASS"]]
     if failures:
-        print(f"\n  ❌ Failures:")
+        print("\n  ❌ Failures:")
         for f in failures:
             print(f"     [{f['group']}] {f['element']}.{f['check']}: "
                   f"expected={f['expected']}  got={f['actual']}")
@@ -465,7 +460,7 @@ def main():
     md_path   = os.path.join(OUTPUT_DIR, f"wlca_report_{TIMESTAMP}.md")
     write_markdown(agg, results, md_path)
 
-    print(f"\n📄 Reports saved to:")
+    print("\n📄 Reports saved to:")
     print(f"   JSON → {json_path}")
     print(f"   MD   → {md_path}")
     print("=" * 65)

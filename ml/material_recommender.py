@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 import logging
